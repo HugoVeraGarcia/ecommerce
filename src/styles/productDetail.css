@@ -1,0 +1,26 @@
+:root {
+    --primary: #f85555;
+    --white: #ffffff;
+    ---gray: rgb(231, 229, 229);
+}
+
+header{
+    margin-top: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 25%;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    margin-bottom: 50px;
+}
+.product_container{
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+
+.icon_circle{
+    color: var(--primary);
+    font-size: 0.6rem;
+}
