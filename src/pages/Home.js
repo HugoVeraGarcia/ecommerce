@@ -21,13 +21,18 @@ const Home = () => {
 
   const filterPrice = e=>{
     e.preventDefault();
-    dispatch(getProductsThunk());    
+    if ((minimum === 0 || minimum === '') && (maximum===0 || maximum==='')){
+      dispatch(getProductsThunk());    
+    }
     productsFiltered = products.filter(product => Number(product.price) >= Number(minimum) && Number(product.price) <= Number(maximum) );
     dispatch(setFilterProducts(productsFiltered))
     setMinimum(0);
     setMaximum(0);
   }
 
+  const showAll = ()=>{
+    dispatch(getProductsThunk());
+  }
   useEffect(()=> {
     dispatch(getProductsThunk());
     dispatch(getCategoriesThunk());
@@ -77,10 +82,17 @@ const Home = () => {
                         onChange={e=> setMaximum(e.target.value)}
                       />
                   
-                    <button
+                  <button
                       className='price_button'
                     >
                       Filter Price
+
+                    </button>
+                    <button
+                      className='price_button'
+                      onClick={showAll}
+                    >
+                      Show all
 
                     </button>
                   </div>
