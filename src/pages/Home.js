@@ -2,7 +2,7 @@ import { Card } from '../components';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCategoriesThunk, getCategoriesThunk, getProductsThunk, queryProductsThunk } from '../redux/actions';
+import { filterCategoriesThunk, getCategoriesThunk, getProductsThunk, queryProductsThunk, setFilterProducts } from '../redux/actions';
 import "../styles/home.css"
 
 const Home = () => {
@@ -14,9 +14,18 @@ const Home = () => {
   const [nameProduct, setNameProduct] = useState('');
   const [isCategoryVisible, setIsCategoryVisible] = useState(true);
   const [isPriceVisible, setIsPriceVisible] = useState(true);
+  const [minimum, setMinimum] = useState(0);
+  const [maximum, setMaximum] = useState(0);
+  
+  let productsFiltered;
 
   const filterPrice = e=>{
-    //e.preventDefault();
+    e.preventDefault();
+    dispatch(getProductsThunk());    
+    productsFiltered = products.filter(product => Number(product.price) >= Number(minimum) && Number(product.price) <= Number(maximum) );
+    dispatch(setFilterProducts(productsFiltered))
+    setMinimum(0);
+    setMaximum(0);
   }
 
   useEffect(()=> {
@@ -43,31 +52,44 @@ const Home = () => {
             <div className="price_title">
                   <p>Price</p> 
                   <i 
-                    className="fa-solid fa-arrow-down arrow_down"
+                    className="fa-solid fa-angle-down"
                     onClick={()=> setIsPriceVisible(!isPriceVisible)}
                     >                  
                   </i>
             </div>
-                <form onSubmit={filterPrice()}>
+                <form onSubmit={filterPrice}>
                   <div className={`price_filter ${isPriceVisible ? '' : 'hide' }`}>
                       <p>FROM</p>
-                      <input type="number" min={0} className="input_price" />
+                      <input 
+                        type="number" 
+                        min={0} 
+                        className="input_price" 
+                        value={minimum}
+                        onChange={(e)=> setMinimum(e.target.value)}
+                      />
 
                       <p>TO</p>
-                      <input type="number" min={0} className="input_price" />
-                  </div>
-                  <button
-                    className='price_button'
-                  >
-                    Filter Price
+                      <input 
+                        type="number" 
+                        min={0} 
+                        className="input_price" 
+                        value={maximum}
+                        onChange={e=> setMaximum(e.target.value)}
+                      />
+                  
+                    <button
+                      className='price_button'
+                    >
+                      Filter Price
 
-                  </button>
+                    </button>
+                  </div>
                 </form>
 
               <div className="category_title"> 
                 <p>Category</p> 
                 <i 
-                  className="fa-solid fa-arrow-down arrow_down"
+                  className="fa-solid fa-angle-down"
                   onClick={()=> setIsCategoryVisible(!isCategoryVisible)}
                   >                  
                 </i>
@@ -116,17 +138,19 @@ const Home = () => {
 
              <main>
 
-                {
+                { 
                   products.length === 0 ? 
-                  <p>We didn't found a product with the word {nameProduct}</p>
+                  <p>We didn't found a product</p>
+                  
                   :
-                    products.map(product => (
-                      <Card
-                        product={product}
-                      />
-                    ))
+                  
+                  products.map(product => ( 
+                    <Card key={product.id}
+                      product={product}
+                    />
+                  ))
                 }
-
+                
               </main>
             </div>
           </div>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ product }) => {
     return (
-        <div>
             <div className="card">
             <li key={product.id}>
                 <Link to={`/products/${product.id}`}>
@@ -28,7 +27,6 @@ const Card = ({ product }) => {
                 
             </li>
             </div>            
-        </div>
     );
 };
 

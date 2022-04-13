@@ -1,4 +1,4 @@
-/*-----NAVEGATION-------*/
+
 .navbar{
     position: fixed;
     background-color: white;
@@ -32,77 +32,3 @@
     text-align: center;
     padding-top: 20px;
 }
-
-/*-----MODAL-------*/
-
-.modal{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    justify-content: center;
-    align-items: center;
-}
-.login{
-    position: absolute;
-    top: 82px;
-    left: 53vw;
-    padding: 20px;
-    background: whitesmoke;
-    border: 2px solid gray;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    transform: scale(0);
-    transition: 0.6s;
-    transform-origin:top;
-
-}
-
-.login.open{
-    transform: scale(1);
-}
-.logout_container{
-    left: 62vw;
-    padding: 10px;
-    margin: 0 120px;
-}
-
-.test{
-    width: 200px;
-    background-color: rgb(218, 252, 252);
-    border-radius: 20px;
-    display: grid;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-}
-.test_data{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 10px;
-    padding: 10px;
-    text-align: left;
-}
-.input{
-    width: 200px;
-    height: 30px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    padding: 0 10px ;
-    border: none;
-}
-.button{
-    background-color: brown;
-    color:white;
-    width: 200px;
-    height: 30px;
-    border: none;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    font-size: 1.2rem;
-}
-.error{
-    color: red;
-    font-weight: 900;
-}
-

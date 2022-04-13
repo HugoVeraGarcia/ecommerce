@@ -1,7 +1,9 @@
+import { Card } from '../components';
 import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import DescriptionProd from '../components/DescriptionProd';
 import PhotoGallery from '../components/PhotoGallery';
 import { getProductsThunk } from '../redux/actions';
 import "../styles/productDetail.css"
@@ -37,47 +39,42 @@ return (
 
         <div className="product_container">
             <header>
-                <div>Home</div>
+                <Link to='/'>
+                    <div>Home</div>
+                </Link>
                 <div>
-                <i class="fa-solid fa-circle icon_circle"></i>
+                <i className="fa-solid fa-circle icon_circle"></i>
                 </div> 
-                <div><b>{productFound?.title}</b></div> 
+                <div className='title_product_'><b>{productFound?.title}</b></div> 
             </header>
-            <div>
-
-                <PhotoGallery
-                    productFound = {productFound}
-                />
-
-
-                    <h1>{productFound?.title}</h1>
-
-
-                <button
-                    className='addChart'
-                >
-                    Add to chart
-                </button>
-                
+            <div className="container_detail">
+                <div className='photoGalery'>
+                    <PhotoGallery
+                        productFound = {productFound}
+                    />
+                </div> 
+                <div className="description">
+                    <DescriptionProd 
+                        productFound = {productFound}
+                    />
+                </div>
             </div>
-            <div>
-                <ul> 
+      
+            <p className='discover'>Discover similar items</p>
+            <div className="main_container">
+            
+                <div className='grid_similar'> 
+            
                     {
                         productsCategory.map(element => (
-                            
-                        <li key={element.id}>
-                            {element?.title}
-                            {element.category.name}
-                            {element?.description}
-                            {element?.price}
-                            <img className='imgProduct' src={element.productImgs[0]} alt="" />
-                            <button
-                                className='addChart'
-                            >Add to chart</button>
-                        </li>
-                    ))   
-                }
-                </ul>
+                            <ul key={element.id}>
+                                
+                                    <Card product = {element} />
+                                
+                            </ul>
+                        ))   
+                    }
+                </div>
             </div>
         </div>
     </Fragment>

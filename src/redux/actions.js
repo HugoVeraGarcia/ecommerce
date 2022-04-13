@@ -1,14 +1,35 @@
+// 1. crear la propiedad en el objeto actions
+// 2. creamos el case en el reducer con la propiedad que creamos en el paso 1
+// 3. crear la función en el archivo actions
+// 4. despachar en el componente la función creada en el paso 3
+
+
 import axios from "axios"
 
 export const actions = {
     setProducts: "SET_PRODUCTS",
     setIsLoading: "SET_IS_LOADING",
-    setCategories: "SET_CATEGORIES"
+    setCategories: "SET_CATEGORIES",
+    setFilterProducts: "SET_FILTER_PRODUCTS",
+    setName: "SET_NAME"
 }
 
 export const setProducts = products => ({
     type: actions.setProducts,
     payload: products
+})
+
+export const setFilterProducts = (filter) => {
+    //console.log('desde actions')
+    return{
+    type: actions.setFilterProducts,
+    payload: filter
+    }
+}
+
+export const setName = filter => ({
+    type: actions.setName,
+    payload: filter
 })
 
 export const setCategories = categories => ({
@@ -20,7 +41,6 @@ export const setIsLoading = isLoading => ({
     type: actions.setIsLoading,
     payload: isLoading
 })
-
 
 export const getProductsThunk = () => {
     return (dispatch) => {

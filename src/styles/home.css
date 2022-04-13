@@ -32,6 +32,9 @@ main{
 }
 
 .categories_container{
+    position: fixed;
+    top: 200;
+    left: 0;
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -49,9 +52,9 @@ main{
 
 
 .price_filter{
-    width: 80%;
+    
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 90px 90px;
     gap: 10px;    
     padding: 20px;
     margin-top: 1rem;
@@ -89,6 +92,7 @@ main{
 
 .list_container{
     width: 80%;
+    margin-left: 250px;
 }
 
 .img_container{
@@ -111,12 +115,6 @@ main{
     margin: 10px;
     align-items: center;
     vertical-align: middle;
-}
-.addChart{
-    width: 200px;
-    height: 40px;
-    background: var(--primary);
-    color: white;
 }
 
 li{
@@ -205,10 +203,10 @@ li{
 .price_button{
     color: var(--white);
     background-color: var(--primary);
-    width: 100px;
+    width: 90px;
     height: 35px;
     border: none;
     border-radius: 8px;
-    margin: 10px 80px 20px 80px;
+    margin: 20px;
     
 }
