@@ -11,8 +11,20 @@ export const actions = {
     setIsLoading: "SET_IS_LOADING",
     setCategories: "SET_CATEGORIES",
     setFilterProducts: "SET_FILTER_PRODUCTS",
-    setName: "SET_NAME"
+    setName: "SET_NAME",
+    setCart: "SET_CART",
 }
+
+
+
+const getConfig = () => ({
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+});
+
+export const setCart = cart => ({
+    type: actions.setCart,
+    payload: cart
+})
 
 export const setProducts = products => ({
     type: actions.setProducts,
@@ -26,11 +38,6 @@ export const setFilterProducts = (filter) => {
     payload: filter
     }
 }
-
-export const setName = filter => ({
-    type: actions.setName,
-    payload: filter
-})
 
 export const setCategories = categories => ({
     type: actions.setCategories,
@@ -46,7 +53,7 @@ export const getProductsThunk = () => {
     return (dispatch) => {
         dispatch(setIsLoading(true));
         return axios
-            .get('https://ecommerce-api-react.herokuapp.com/api/v1/products')
+            .get('https://ecommerce-api-react.herokuapp.com/api/v1/products/')
             .then((res) =>{ dispatch(setProducts(res.data.data.products))})
             .finally(()=> dispatch(setIsLoading(false)));
     };
@@ -87,6 +94,37 @@ export const loginThunk = credentials => {
         dispatch(setIsLoading(true));
         return axios
             .post('https://ecommerce-api-react.herokuapp.com/api/v1/users/login', credentials)
-            .finally(dispatch(setIsLoading(false)));
+            .finally(()=>dispatch(setIsLoading(false)));
+    }
+}
+
+export const addCartThunk = product => {
+    return dispatch =>{
+        dispatch(setIsLoading(true));
+        return axios
+            .post('https://ecommerce-api-react.herokuapp.com/api/v1/cart', product, getConfig())
+            .finally(()=> dispatch(setIsLoading(false)));
+    }
+}
+
+export const addNewUserThunk = user => {
+    return dispatch => {
+        dispatch(setIsLoading(true));
+        return axios.post(`https://ecommerce-api-react.herokuapp.com/api/v1/users`, user)
+        .finally(()=> dispatch(setIsLoading(false)));
+    }
+}
+
+export const getUserCartThunk = () => {
+    return dispatch => {
+        dispatch(setIsLoading(true));
+        return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart/', getConfig())
+            .then(res => dispatch(setCart(res.data.data.cart)))
+            .catch(error =>{
+                if (error.response.status === 404){
+                    dispatch(setCart([]))
+                }
+            })
+            .finally(()=> dispatch(setIsLoading(false)));
     }
 }

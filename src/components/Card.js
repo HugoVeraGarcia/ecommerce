@@ -1,7 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addCartThunk } from '../redux/actions';
 
 const Card = ({ product }) => {
+
+    const dispatch = useDispatch();
+
+    const addCart = () => {
+        const productAdd =
+            {
+                id: product.id,
+                quantity: 1
+            }
+        dispatch(addCartThunk(productAdd))
+        console.log(productAdd)
+    }
+
     return (
             <div className="card">
             <li key={product.id}>
@@ -20,7 +35,11 @@ const Card = ({ product }) => {
                 <div className="price_cart">
                     <p className='price_value'>$ {product.price}</p>
                     <div className='icon_container_home'>
-                    <i className="fa-solid fa-cart-shopping iconCart"></i>
+                    <i 
+                        className="fa-solid fa-cart-shopping iconCart"
+                        onClick={()=> addCart()}
+                        >     
+                    </i>
                     </div>
                 </div>
                 </div>

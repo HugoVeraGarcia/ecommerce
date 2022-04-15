@@ -30,7 +30,7 @@ const ProductsDetail = () => {
         }
     },[ dispatch, productFound ])
 
-//    console.log('productsCategory',productsCategory)
+
 return (
     <Fragment>
           <form>
@@ -56,6 +56,7 @@ return (
                 <div className="description">
                     <DescriptionProd 
                         productFound = {productFound}
+                        id = {id}
                     />
                 </div>
             </div>

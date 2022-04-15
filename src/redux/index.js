@@ -2,17 +2,15 @@ import { actions } from "./actions";
 
 const INITIAL_STATE = {
     products: [],
-    products2: [],
     isLoading: false,
     categories: [],
-    name: []
+    cart: [],
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
 		switch(action.type){
 
             case actions.setProducts:
-                //console.log('from reducer products')
                 return{
                     ...state,
                     products: action.payload
@@ -28,18 +26,15 @@ const reducer = (state = INITIAL_STATE, action) => {
                     categories: action.payload
                 }
             case actions.setFilterProducts:
-                //console.log('from reducer filter')
-                //console.log('from reducer filter-payload', action.payload)
                 return{
                     ...state,
                     products: action.payload
                 }
-            case actions.setName:
+            case actions.setCart:
                 return{
                     ...state,
-                    name: action.payload
+                    cart: action.payload
                 }
-
 
         default:
             return state;

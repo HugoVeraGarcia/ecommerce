@@ -39,6 +39,7 @@
     color: white;
     margin: 40px 0;
     border: none;
+    cursor: pointer;
 }
 
 .title_product{

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCartThunk } from '../redux/actions';
 import '../styles/descriptionProd.css'
 
-const DescriptionProd = ({ productFound }) => {
+const DescriptionProd = ({ productFound, id }) => {
     const [quantity, setQuantity] = useState(0);
+
+    const dispatch = useDispatch();
 
     const minus = () => {
         if (quantity===0){
@@ -10,8 +14,17 @@ const DescriptionProd = ({ productFound }) => {
             setQuantity(quantity-1)
         }
     }
-//    console.log('price',productFound?.price)
 
+    const addCart = () => {
+        const product =
+            {
+                id,
+                quantity
+            }
+        dispatch(addCartThunk(product))
+    }
+
+    
     return (
         <div>
             <div>
@@ -35,6 +48,7 @@ const DescriptionProd = ({ productFound }) => {
 
                 <button
                     className='addChart'
+                    onClick={addCart}
                 >
                     Add to chart   <i className="fa-solid fa-cart-shopping  cart_icon"></i>
                 </button>
