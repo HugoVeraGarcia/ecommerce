@@ -2,17 +2,28 @@ import React, { useState } from 'react';
 import '../styles/navbar.css';
 import logo from "../assets/logo.png"
 import LoginModal from './LoginModal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Cart from '../pages/Cart';
 import { useDispatch } from 'react-redux';
-import { getUserCartThunk } from '../redux/actions';
+import { getPurchasesThunk, getUserCartThunk } from '../redux/actions';
 
 const NavBar = () => {
 
     const [isLoginOpen, setIsLoginOpen] =useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const openPurchases = ()=>{
+        if(localStorage.getItem('token')){
+            dispatch(getPurchasesThunk())
+            navigate("/purchases")
+        } else {
+            setIsLoginOpen(true);
+        }
+    }
+
     const openCart = ()=>{
         if(localStorage.getItem('token')){
             setIsCartOpen(!isCartOpen);
@@ -39,7 +50,11 @@ const NavBar = () => {
                             </i>
                         </div>
                         <div className='icon_container'>
-                            <i className="fa-solid fa-box-archive icon"></i>
+                            <i 
+                                className="fa-solid fa-box-archive icon"
+                                onClick={openPurchases}
+                            >
+                            </i>
                         </div>
                         <div className='icon_container'>
                             <i 

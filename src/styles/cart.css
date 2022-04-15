@@ -19,6 +19,7 @@
     transform: translateX(250px);
     transition: 0.5s;
     font-size: 0.8rem;
+    overflow: auto;
 }
 
 .open{
@@ -62,4 +63,10 @@
 .great_total{
     border-top: 1px solid var(---gray);
 
+}
+.title{
+    cursor: pointer;
+}
+.title:hover{
+    color: blue;
 }

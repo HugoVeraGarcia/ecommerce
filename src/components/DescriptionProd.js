@@ -4,7 +4,7 @@ import { addCartThunk } from '../redux/actions';
 import '../styles/descriptionProd.css'
 
 const DescriptionProd = ({ productFound, id }) => {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
     const dispatch = useDispatch();
 

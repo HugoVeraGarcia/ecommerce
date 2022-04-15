@@ -1,5 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+//import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { deleteProductThunk, purchaseCartThunk } from '../redux/actions';
 import "../styles/cart.css"
 
 const Cart = ( {isCartOpen} ) => {
@@ -7,10 +10,12 @@ const Cart = ( {isCartOpen} ) => {
     const carts = useSelector(state => state.cart)
 //    const [fullTotal, setFullTotal] = useState(0);
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     console.log(carts.products)
 
-//    let totaly
+//    let totaly;
 
 /*    const sumUp = ()=>{
         setFullTotal(fullTotal+100);
@@ -27,36 +32,54 @@ const Cart = ( {isCartOpen} ) => {
         <div className={`cart-modal ${isCartOpen ? 'open' : ''}`}>
             <h2>CART</h2>
             <ul>
-            {
+            {   carts.products ?
+                
                 carts.products.map(cart => (
                     
                     
-                    <li key={cart.id}>
-
+                    <li key={cart.id} >
+                    
                         <div className="brand gray">
-                        <div className="label_brand"> {cart.brand} </div>
-                            <i className="fa-solid fa-trash-can delete"></i>
+                            <div className="label_brand"> {cart.brand} </div>
+                                <i 
+                                    className="fa-solid fa-trash-can delete"
+                                    onClick={()=>dispatch(deleteProductThunk(cart.id))}
+                                    >
+
+                                </i>
+                            </div>
+                        <div className="title" onClick={()=>navigate(`/products/${cart.id}`)}>
+                            {cart.title} id {cart.id}<br />
                         </div>
-                        {cart.title}<br />
+                        
                         
                         <div className="quantityCard">
                             {cart.productsInCart.quantity}
                         </div>
 
                         <div className="total">
-                            <div className="label"> Total:</div> $ {cart.price * cart.productsInCart.quantity}<br />
+                            <div className="label"> Total</div> $ {cart.price * cart.productsInCart.quantity}<br />
                         </div>
 
                     </li>
 
                 ))
-
-
-            }   
+                :
+                <p></p>
+          }   
             </ul>
-            <div className="great_total">
-                Total :
-            </div>
+            {
+                carts.products ?
+                    <div className="great_total">
+                        <button 
+                            className='button'
+                            onClick={()=> dispatch(purchaseCartThunk())}
+                        >
+                                Checkout</button>
+                    </div>
+                :
+                    <p>No products</p>
+            }
         </div>
     );
 };

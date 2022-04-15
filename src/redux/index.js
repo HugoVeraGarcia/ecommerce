@@ -5,6 +5,7 @@ const INITIAL_STATE = {
     isLoading: false,
     categories: [],
     cart: [],
+    purchases: [],
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -34,6 +35,11 @@ const reducer = (state = INITIAL_STATE, action) => {
                 return{
                     ...state,
                     cart: action.payload
+                }
+            case actions.setPurchases:
+                return{
+                    ...state,
+                    purchases: action.payload
                 }
 
         default:
