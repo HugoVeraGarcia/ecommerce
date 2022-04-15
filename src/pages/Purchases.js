@@ -31,9 +31,9 @@ const Purchases = () => {
                                 </div>
                                 <div className="table_content">
                                     {purchase.cart.products?.map(product => (
-                                        <div key={product.id}> 
+                                        <div key={product.id}>  
                                             <div className="table_content_detail">
-                                                {product.title}  
+                                                <Link to= {`/products/${product.id}`} > {product.title} </Link>
                                                 <div className="quantity"> {product.productsInCart.quantity}</div>
                                                 <p>price $ {product.price}</p> 
                                                 
