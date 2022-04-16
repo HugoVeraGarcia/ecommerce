@@ -21,7 +21,7 @@ const LoginModal = ({ isLoginOpen, setIsLoginOpen }) => {
     const dispatch = useDispatch();
 
     const useTest = () => {
-        setEmail('hugo@gmail.com')
+        setEmail('hugo3@gmail.com')
         setPassword('hugohugo')
     }
     const login = e => {
@@ -116,7 +116,7 @@ const LoginModal = ({ isLoginOpen, setIsLoginOpen }) => {
                                         <p> <strong>Test</strong></p>
                                         <div className="test_data">
                                             <i className="fa-solid fa-envelope icon"></i>
-                                            <p>hugo@gmail.com</p>
+                                            <p>hugo3@gmail.com</p>
                                             <i className="fa-solid fa-key icon"></i>
                                             <p>hugohugo</p>
                                         </div>

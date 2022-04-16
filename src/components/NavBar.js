@@ -18,9 +18,11 @@ const NavBar = () => {
     const openPurchases = ()=>{
         if(localStorage.getItem('token')){
             dispatch(getPurchasesThunk());
+            setIsCartOpen(false);
             navigate("/purchases");
         } else {
             setIsLoginOpen(true);
+
         }
     }
 

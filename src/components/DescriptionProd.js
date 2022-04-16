@@ -37,10 +37,10 @@ const DescriptionProd = ({ productFound, id }) => {
 
                         <p>Price</p>
                         <p>Quantity</p>
-                        <p>$ { productFound?.price }</p>
+                        <p className='price_description'>$ { productFound?.price }</p>
                         <div className='quantity_container'>
                             <div onClick={minus} className='increment'>-</div>
-                            <div className='quantity'>{quantity}</div>
+                            <div className='quantity_description'>{quantity}</div>
                             <div onClick={()=>setQuantity(quantity + 1)} className='increment'>+</div>
                         </div>
                     </div>
