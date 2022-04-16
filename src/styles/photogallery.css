@@ -8,8 +8,8 @@
 .main{
     margin-left: 10px;
     display: grid;
-    grid-template-columns: 80px 380px 80px;
-    width: 500px;;
+    grid-template-columns: 50px 150px 50px;
+    width: 300px;;
     height: 500px;
     text-align: center; /*???*/
     align-items: center;  /*vertical*/
@@ -17,7 +17,7 @@
 }
 
 .imgProductDetail{
-    height: 250px;
+    height: 150px;
 }
 
 .smallPhotosContainer{
@@ -44,5 +44,22 @@
 
     border: 2px solid var(--primary);
     padding: 4px;
+
+}
+
+@media only screen and (min-width: 800px){
+    .main{
+        margin-left: 10px;
+        display: grid;
+        grid-template-columns: 80px 380px 80px;
+        width: 500px;;
+        height: 500px;
+        text-align: center; /*???*/
+        align-items: center;  /*vertical*/
+        align-content:space-around;  /*horizontal??*/
+    }
+    .imgProductDetail{
+        height: 250px;
+    }
 
 }

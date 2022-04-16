@@ -9,7 +9,7 @@ const LoginModal = ({ isLoginOpen, setIsLoginOpen }) => {
     const [ password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     
-    const [isSign, setIsSign] = useState(true)
+    const [isSign, setIsSign] = useState(false)
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');

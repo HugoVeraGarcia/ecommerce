@@ -6,35 +6,36 @@
 
 .quantity_container{
     display: flex;
+    font-size: 0.5rem;
 
 }
 .price_quantity{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 5px;
 }
 
 .increment{
-    width: 25px;
-    height: 25px;
-    font-size: 1.5rem;
+    width: 15px;
+    height: 15px;
+    font-size: 1rem;
     text-align: center;
     border: 1px solid var(---gray);
     cursor: pointer;
 }
 
 .quantity{
-    width: 25px;
-    height: 25px;
-    font-size: 1.5rem;
+    width: 15px;
+    height: 15px;
+    font-size: 1rem;
     text-align: center;
     border: 1px solid var(---gray);
 
 }
 
 .addChart{
-    width: 100%;
-    height: 60px;
+    width: 85%;
+    height: 40px;
     background: var(--primary);
     color: white;
     margin: 40px 0;
@@ -43,13 +44,61 @@
 }
 
 .title_product{
-    margin: 40px 0 40px 0;
+    margin: 20px 0 20px 0;
 }
 .description_prod{
     color: rgb(75, 75, 75);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .cart_icon{
     font-size: 1.2rem;
     margin-left: 1rem;
 }
+
+@media only screen and (min-width: 800px){
+    .title_product{
+        margin: 40px 0 40px 0;
+    }
+    .description_prod{
+        color: rgb(75, 75, 75);
+        margin-bottom: 40px;
+    }
+
+    .addChart{
+        width: 100%;
+        height: 60px;
+        background: var(--primary);
+        color: white;
+        margin: 40px 0;
+        border: none;
+        cursor: pointer;
+    }
+    .quantity_container{
+        display: flex;
+    
+    }
+    .price_quantity{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .increment{
+        width: 25px;
+        height: 25px;
+        font-size: 1.5rem;
+        text-align: center;
+        border: 1px solid var(---gray);
+        cursor: pointer;
+    }
+    
+    .quantity{
+        width: 25px;
+        height: 25px;
+        font-size: 1.5rem;
+        text-align: center;
+        border: 1px solid var(---gray);
+    
+    }
+}
+

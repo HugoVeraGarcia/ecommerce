@@ -19,7 +19,7 @@ a:link {
 
 main{
     display: grid;
-    grid-template-columns: repeat(3, 300px);
+    grid-template-columns: repeat(1, 300px);
     gap: 20px;
 
 }
@@ -56,22 +56,22 @@ main{
 .p_category{
     margin: 0.5rem 3rem;
     height: 20px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 800;
 }
 
 
 .price_filter{
-    
     display: grid;
-    grid-template-columns: 90px 90px;
-    gap: 10px;    
-    padding: 20px;
+    grid-template-columns: 50px 50px;
+    gap: 5px;    
+    padding: 10px;
     margin-top: 1rem;
-    font-size: 1rem;
-    font-weight: 800;
+    font-size: 0.8rem;
+    font-weight: 600;
     transition: display 1s;
 }
+
 .category_detail{
     margin-top: 1rem;
     cursor: pointer;
@@ -102,7 +102,7 @@ main{
 
 .list_container{
     width: 80%;
-    margin-left: 250px;
+    margin-left: 180px;
 }
 
 .img_container{
@@ -131,7 +131,7 @@ li{
     list-style-type: none;
 }
 .title{
-    width: 250px;
+    width: 150px;
 }
 .price_text{
     color: rgb(206, 203, 203);
@@ -178,7 +178,7 @@ li{
 .input_price{
     height: 35px;
     font-size: 1rem;
-    width: 120px;
+    width: 70px;
     background-color: var(---gray);
     border: 1px solid gray;
     border-radius: 5px;
@@ -214,10 +214,68 @@ li{
 .price_button{
     color: var(--white);
     background-color: var(--primary);
-    width: 90px;
+    width: 50px;
     height: 35px;
     border: none;
     border-radius: 8px;
-    margin: 20px;
-    
+    margin: 20px;    
 }
+
+@media only screen and (min-width: 900px){
+    main{
+        display: grid;
+        grid-template-columns: repeat(2, 300px);
+        gap: 20px;
+    
+    }
+    .price_filter{
+        display: grid;
+        grid-template-columns: 90px 90px;
+        gap: 10px;    
+        padding: 20px;
+        font-weight: 800;
+        transition: display 1s;
+    }
+    .title{
+        width: 250px;
+    }
+    .input_price{
+        height: 35px;
+        font-size: 1rem;
+        width: 120px;
+        background-color: var(---gray);
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+    .price_button{
+        color: var(--white);
+        background-color: var(--primary);
+        width: 90px;
+        height: 35px;
+        border: none;
+        border-radius: 8px;
+        margin: 20px;   
+    }
+    .list_container{
+        width: 80%;
+        margin-left: 250px;
+    }
+    .p_category{
+        margin: 0.5rem 3rem;
+        height: 20px;
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+}
+
+@media only screen and (min-width: 1200px){
+    main{
+        display: grid;
+        grid-template-columns: repeat(3, 300px);
+        gap: 20px;
+    
+    }
+
+}
+ 
